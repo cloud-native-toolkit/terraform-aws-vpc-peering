@@ -1,0 +1,9 @@
+name: aws-vpc-peering
+type: terraform
+description: Module to provision vpc-peering on aws
+tags:
+  - tools
+  - devops
+versions: []
+cloudProvider: aws
+id: github.com/cloud-native-toolkit/terraform-aws-vpc-peering
