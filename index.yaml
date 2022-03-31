@@ -4,6 +4,29 @@ description: Module to provision vpc-peering on aws
 tags:
   - tools
   - devops
-versions: []
+versions:
+  - platforms: []
+    dependencies: []
+    variables:
+      - name: region
+        type: string
+        default: ap-south-1
+      - name: access_key
+        type: string
+        default: ''
+      - name: secret_key
+        type: string
+        default: ''
+      - name: vpc_id1
+        type: string
+        default: ''
+      - name: name_prefix
+        type: string
+        default: swe
+      - name: vpc_id2
+        type: string
+        default: ''
+    version: v1.0.0
+    outputs: []
 cloudProvider: aws
 id: github.com/cloud-native-toolkit/terraform-aws-vpc-peering
