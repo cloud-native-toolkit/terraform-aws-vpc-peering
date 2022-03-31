@@ -1,50 +1,76 @@
+variable "edge_name_prefix" {
+  type        = string
+  description = "Prefix name that should be used for peering gateway"
+  default     = "swe-edge"
+}
 
-# Resource Group Variables
+variable "mgmt_name_prefix" {
+  type        = string
+  description = "Prefix name that should be used for peering gateway"
+  default     = "swe-mgmt"
+}
+
+
+variable "edge_internal_cidr" {
+  type        = string
+  description = "The cidr range of the internal network.Either provide manually or chose from AWS IPAM poolsß"
+  default     = "10.0.0.0/16"
+}
+
+variable "mgmt_internal_cidr" {
+  type        = string
+  description = "The cidr range of the internal network.Either provide manually or chose from AWS IPAM poolsß"
+  default     = "10.1.0.0/16"
+}
+
+variable "instance_tenancy" {
+  type        = string
+  description = "Instance is shared / dedicated, etc. #[default, dedicated, host]"
+  default     = "default"
+}
+
 variable "resource_group_name" {
   type        = string
   description = "Existing resource group where the IKS cluster will be provisioned."
+  default     = "default"
 }
 
-variable "ibmcloud_api_key" {
-  type        = string
-  description = "The api key for IBM Cloud access"
+variable "vpc_id1" {
+  type    = string
+  default = ""
 }
+
+variable "vpc_id2" {
+  type    = string
+  default = ""
+}
+
+variable "cloud_provider" {
+  type    = string
+  default = "aws"
+
+}
+
+variable "provision" {
+  type        = bool
+  description = "Flag indicating that the instance should be provisioned. If false then an existing instance will be looked up"
+  default     = true
+}
+
+
 
 variable "region" {
   type        = string
-  description = "Region for VLANs defined in private_vlan_number and public_vlan_number."
+  default     = "ap-southeast-2"
+  description = "Please set the region where the resouces to be created "
 }
 
-variable "namespace" {
-  type        = string
-  description = "Namespace for tools"
+variable "access_key" {
+  type = string
 }
 
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster"
-  default     = ""
+variable "secret_key" {
+  type = string
 }
 
-variable "cluster_type" {
-  type        = string
-  description = "The type of cluster that should be created (openshift or kubernetes)"
-}
 
-variable "cluster_exists" {
-  type        = string
-  description = "Flag indicating if the cluster already exists (true or false)"
-  default     = "true"
-}
-
-variable "name_prefix" {
-  type        = string
-  description = "Prefix name that should be used for the cluster and services. If not provided then resource_group_name will be used"
-  default     = ""
-}
-
-variable "vpc_cluster" {
-  type        = bool
-  description = "Flag indicating that this is a vpc cluster"
-  default     = false
-}
